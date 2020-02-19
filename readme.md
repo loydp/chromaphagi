@@ -10,6 +10,6 @@ turn it into an array, save it.
 
 The image is then treated with cellular automata, which work until a certain
 point and then stop. The CA take a certain color, and move it in a particular
-direction. 
+direction. OK.
 
-When the CA are done, the image is saved.
+When the CA are done, the image is saved. Test.
