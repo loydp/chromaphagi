@@ -6,25 +6,55 @@ import java.io.File;
 import java.io.IOException;
 
 public class ImageLoader {
-
-	/**
-	 * Loads an image.
-	 */
-	private BufferedImage image;
-
+	private BufferedImage bufferedImage;
+	private int[][][] imageArray;
+	private int height;
+	private int width;
+	private final int Z_AXIS = 3;
+	
 	public ImageLoader(String imgPath) {
-		this.image = loadBufferedImage(imgPath);
+		this.bufferedImage = loadBufferedImage(imgPath);
+		height = bufferedImage.getHeight();
+		width = bufferedImage.getWidth();
+		imageToArray();
 	}
 
-	public BufferedImage getImage() {
-		return this.image;
+	/**
+	 * Takes a buffered image and turns it into a three dimensional array
+	 * containing rgb color channels on the z axis.
+	 */
+	private void imageToArray() {
+		int pixel;
+		int[][][] imgArr = new int[width][height][Z_AXIS];
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				pixel = bufferedImage.getRGB(i, j);
+				imgArr[i][j][0] = (pixel >> 16) & 0xFF;
+				imgArr[i][j][1] = (pixel >> 8) & 0xFF;
+				imgArr[i][j][2] = pixel & 0xFF;
+			}
+		}
+		imageArray = imgArr;
+	}
+	
+	public int[][][] getImage() {
+		return imageArray;
 	}
 
 	// TODO remove boolean if it's never used.
 	public boolean saveImage() {
+		int pixel;
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				pixel = imageArray[i][j][0];
+				pixel = (pixel << 8) + imageArray[i][j][1];
+				pixel = (pixel << 8) + imageArray[i][j][2];
+			}
+		}
+		
 		try {
 			File outputfile = new File("aftermath.png");
-			ImageIO.write(image, "png", outputfile);
+			ImageIO.write(bufferedImage, "png", outputfile);
 		} catch (IOException e) {
          System.out.println(e);
 		}

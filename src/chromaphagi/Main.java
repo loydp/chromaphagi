@@ -12,8 +12,10 @@ public class Main {
 	public final static String IMG_PATH = "src/dat/testimg.jpg";
 
 	public static void main(String[] args) {
-		ImageLoader fHandle = new ImageLoader(IMG_PATH);
-
+		ImageLoader imgLoader = new ImageLoader(IMG_PATH);
+		int[][][] ok = imgLoader.getImage();
+		PetriDish petri = new PetriDish(ok);
+		imgLoader.saveImage();
 		System.out.println("fHandle made");
 	}
 
