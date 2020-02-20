@@ -41,8 +41,7 @@ public class ImageLoader {
 		return imageArray;
 	}
 
-	// TODO remove boolean if it's never used.
-	public boolean saveImage() {
+	public void saveImage() {
 		int pixel;
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
@@ -58,7 +57,6 @@ public class ImageLoader {
 		} catch (IOException e) {
          System.out.println(e);
 		}
-		return true;
 	}
 
 	/**

@@ -6,7 +6,9 @@ public class PetriDish {
 	public PetriDish(int[][][] img) {
 		this.img = img;
 	}
-	
-	
+
+	public void inoculate() {
+		System.out.println("Test: inoculate reached.");
+	}
 	
 }

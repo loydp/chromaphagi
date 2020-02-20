@@ -13,8 +13,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		ImageLoader imgLoader = new ImageLoader(IMG_PATH);
-		int[][][] ok = imgLoader.getImage();
-		PetriDish petri = new PetriDish(ok);
+		PetriDish petri = new PetriDish(imgLoader.getImage());
+		
+		petri.inoculate();
+		
 		imgLoader.saveImage();
 		System.out.println("fHandle made");
 	}
