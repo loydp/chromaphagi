@@ -8,7 +8,9 @@ public class PetriDish {
 	}
 
 	public void inoculate() {
-		System.out.println("Test: inoculate reached.");
+		System.out.println("Test: petri-dish reached.");
 	}
-	
+
+
+
 }

@@ -18,7 +18,6 @@ public class Main {
 		petri.inoculate();
 		
 		imgLoader.saveImage();
-		System.out.println("fHandle made");
 	}
 
 }

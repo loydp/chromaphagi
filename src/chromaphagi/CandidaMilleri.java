@@ -8,7 +8,6 @@ public class CandidaMilleri extends Chromaphagi {
 
 	@Override
 	void mitosis() {
-		// TODO Auto-generated method stub
 
 	}
 
