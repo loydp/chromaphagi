@@ -1,15 +1,20 @@
 package chromaphagi;
 
+import java.util.Queue;
+
 public abstract class Chromaphagi {
-	private int x;
-	private int y;
+
+	// Change to protected, get rid of get x/y?
+	int x;
+	int y;
+
+	public int getX() {return x;}
+	public int getY() {return y;}
 	
 	public Chromaphagi(int x, int y) {
-		System.out.println("Test: chromaphagi reached.");
 		this.x = x;
 		this.y = y;
 	}
-
-	abstract void mitosis();
 	
+	public abstract void act(Queue<Chromaphagi> colony);
 }

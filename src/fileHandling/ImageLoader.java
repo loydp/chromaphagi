@@ -10,7 +10,7 @@ public class ImageLoader {
 	private int[][][] imageArray;
 	private int height;
 	private int width;
-	private final int Z_AXIS = 3;
+	private final int Z_AXIS = 4;
 	
 	public ImageLoader(String imgPath) {
 		this.bufferedImage = loadBufferedImage(imgPath);
@@ -41,13 +41,17 @@ public class ImageLoader {
 		return imageArray;
 	}
 
-	public void saveImage() {
+	public void saveImage(int[][][] saveImage) {
+		System.out.println(saveImage[0][0][1]);
+		imageArray = saveImage;
+		
 		int pixel;
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
 				pixel = imageArray[i][j][0];
 				pixel = (pixel << 8) + imageArray[i][j][1];
 				pixel = (pixel << 8) + imageArray[i][j][2];
+				bufferedImage.setRGB(i, j, pixel);
 			}
 		}
 		
