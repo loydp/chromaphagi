@@ -12,14 +12,13 @@ public class CandidaMilleri extends Chromaphagi {
 		PetriDish.setChromaphagi(x, y);
 	}
 	
-	public void act(Queue<Chromaphagi> edge) {
+	public boolean act(Queue<Chromaphagi> edge) {
 		process();
 		mitosis(edge);
+		return true;
 	}
 
 	void process() {
-		int x = super.getX();
-		int y = super.getY();
 		if (PetriDish.getChannel(x, y, 0) < 100) {
 			PetriDish.setChannel(x, y, 0, 255);
 			PetriDish.setChannel(x, y, 1, 255);
@@ -32,8 +31,6 @@ public class CandidaMilleri extends Chromaphagi {
 	}
 
 	void mitosis(Queue<Chromaphagi> edge) {
-		int x = super.getX();
-		int y = super.getY();
 		if (PetriDish.inDish(x, y + 1) && PetriDish.isempty(x, y + 1)) {
 			edge.add(new CandidaMilleri(x, y + 1));
 			PetriDish.setChromaphagi(x, y + 1);

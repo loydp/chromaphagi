@@ -38,7 +38,13 @@ public class PetriDish {
 	public static void setChannel(int x, int y, int z, int val) {
 		img[x][y][z] = val;
 	}
-	
+
+	public static void setChannels(int x, int y, int r, int g, int b) {
+		img[x][y][0] = r;
+		img[x][y][1] = g;
+		img[x][y][2] = b;
+	}
+
 	public static void setChromaphagi(int x, int y) {
 		img[x][y][3] = 1;
 	}

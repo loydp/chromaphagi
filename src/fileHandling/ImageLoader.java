@@ -42,7 +42,6 @@ public class ImageLoader {
 	}
 
 	public void saveImage(int[][][] saveImage) {
-		System.out.println(saveImage[0][0][1]);
 		imageArray = saveImage;
 		
 		int pixel;

@@ -5,6 +5,7 @@ import java.util.Queue;
 
 import chromaphagi.CandidaMilleri;
 import chromaphagi.Chromaphagi;
+import chromaphagi.SaccharomycesCerevisiae;
 
 public class Lab {
 	PetriDish petriDish;
@@ -12,7 +13,7 @@ public class Lab {
 	public Lab(PetriDish petriDish) {
 		this.petriDish = petriDish;
 		
-		Chromaphagi cm = new CandidaMilleri(petriDish.getWidth() / 2,
+		Chromaphagi cm = new SaccharomycesCerevisiae(petriDish.getWidth() / 2,
 															petriDish.getHeight() / 2);
 		
 		Queue<Chromaphagi> colony = new LinkedList<>();
