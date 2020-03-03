@@ -1,28 +1,38 @@
 package lab;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import chromaphagi.CandidaMilleri;
 import chromaphagi.Chromaphagi;
+import chromaphagi.Culture;
+import chromaphagi.MicrococcusLuteus;
 import chromaphagi.SaccharomycesCerevisiae;
 
 public class Lab {
 	PetriDish petriDish;
 	
 	public Lab(PetriDish petriDish) {
-		this.petriDish = petriDish;
 		
-		Chromaphagi cm = new SaccharomycesCerevisiae(petriDish.getWidth() / 2,
-															petriDish.getHeight() / 2);
+		Chromaphagi chph1 = new MicrococcusLuteus(PetriDish.getHeight() /2, PetriDish.getWidth() /2);
 		
-		Queue<Chromaphagi> colony = new LinkedList<>();
-		colony.add(cm);
+		Culture culture1 = new Culture(chph1);
 		
-		// continuously loops through the edge of the chromaphagi colony.
-		while (!colony.isEmpty()) {
-			colony.poll().act(colony);
+		culture1.activate();
+		
+		System.out.println(PetriDish.isEmpty(100, 100));
+		// hack
+		for (int i = 0; i < PetriDish.getWidth(); i++) {
+			for (int j = 0; j < PetriDish.getHeight(); j++) {
+				PetriDish.unSetChromaphagi(i, j);
+			}
 		}
+		System.out.println(PetriDish.isEmpty(100, 100));
+		
+		Chromaphagi chph2 = new MicrococcusLuteus(PetriDish.getHeight() /2, PetriDish.getWidth() /2);
+		
+		Culture culture2 = new Culture(chph2);
+		
+		culture2.activate();
+		
+		
+		
 	}
-
 }

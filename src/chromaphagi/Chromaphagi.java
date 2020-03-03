@@ -2,6 +2,8 @@ package chromaphagi;
 
 import java.util.Queue;
 
+import lab.PetriDish;
+
 public abstract class Chromaphagi {
 
 	// Change to protected, get rid of get x/y?
@@ -14,7 +16,15 @@ public abstract class Chromaphagi {
 	public Chromaphagi(int x, int y) {
 		this.x = x;
 		this.y = y;
+		PetriDish.setChromaphagi(x, y);
 	}
-	
-	public abstract boolean act(Queue<Chromaphagi> colony);
+
+	protected abstract void deactivate();
+
+	private abstract int[] getNeighbors();
+
+	protected abstract Chromaphagi mitosis();
+
+	public abstract Chromaphagi process();
+
 }

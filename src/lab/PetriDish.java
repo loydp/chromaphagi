@@ -12,8 +12,8 @@ public class PetriDish {
 	private static int width;
 	private static int height;
 	
-	public int getWidth() {return width;}
-	public int getHeight() {return height;}
+	public static int getWidth() {return width;}
+	public static int getHeight() {return height;}
 	
 	public PetriDish(int[][][] img) {
 		this.img = img;
@@ -49,7 +49,11 @@ public class PetriDish {
 		img[x][y][3] = 1;
 	}
 	
-	public static boolean isempty(int x, int y) {
+	public static void unSetChromaphagi(int x, int y) {
+		img[x][y][3] = 0;
+	}
+	
+	public static boolean isEmpty(int x, int y) {
 		return (img[x][y][3] == 0);
 	}
 	
