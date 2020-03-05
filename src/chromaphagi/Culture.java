@@ -11,19 +11,25 @@ public class Culture {
 	public Culture(Chromaphagi chph) {
 		edge = new LinkedList<>();
 		this.edge.add(chph);
-		System.out.println("culture activated");
 		rand = new Random();
 	}
 	
 	/**
 	 * Take the next chromaphagi on the queue and activate it.
 	 */
-	public void activate() {
-		//while (!edge.isEmpty()) {
-		for (int i = 0; i < 100; i++) {
-			int r = rand.nextInt(128);
-			Chromaphagi chph = edge.poll();
-			chph.process(r, edge);
-		}
+	public boolean activate() {
+		int r = rand.nextInt(128);
+		int r2 = rand.nextInt(128);
+		if (!edge.isEmpty())
+			edge.poll().process(r, r2, edge);
+			else
+				edge.poll();
+		if (edge.isEmpty())
+			return false;
+		return true;
 	}
 }
+
+
+
+//while (!edge.isEmpty()) {

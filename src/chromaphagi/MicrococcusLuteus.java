@@ -14,6 +14,7 @@ public class MicrococcusLuteus extends Chromaphagi {
 	 */
 	public MicrococcusLuteus(int x, int y) {
 		super(x, y);
+		//TODO  System.out.println("CHPH: " + x + " " + y);
 	}
 
 	/**
@@ -24,40 +25,49 @@ public class MicrococcusLuteus extends Chromaphagi {
 	 * 4. if it is, do so.
 	 * 5. Check if deactivation or destruction is necessary.
 	 */
-	public void process(int rand, Queue<Chromaphagi> edge) {
-		// process information and/or create conditions of demise
+	public void process(int rand, int rand2, Queue<Chromaphagi> edge) {
 		boolean consumed = consume();
-		
-		if (consumed) {
-			Chromaphagi chph = mitosis(rand);
-			if (chph != null)
-				edge.add(chph);
-			chph = mitosis(rand);
-			if (chph != null)
-				edge.add(chph);
+		if (!surrounded()) {
+   		
+   		if (consumed) {
+   			Chromaphagi chph = mitosis(rand);
+   			if (chph != null) {
+   				edge.add(chph);
+   			}
+   			if (rand < 40) {
+   				chph = mitosis(rand2);
+      			if (chph != null)
+      				edge.add(chph);
+   			}
+   		}
 		}
-
-		// deactivateCheck();
 	}
 
 	/**
 	 * Processes the image in the characteristic manner of this Chromaphagi
-	 * strain.
+	 * strain. May also alter energy levels.
 	 * @return a boolean representing if the cell has consumed
 	 * color or not.
 	 */
-	private boolean consume() {
+	protected boolean consume() {
 		int r = PetriDish.getChannel(x, y, 0);
-		if (r < 100) {
-			if (PetriDish.getChannel(x, y, 0) < 100)
-				PetriDish.setChannels(x, y, 0, 0, 0);
+		int g = PetriDish.getChannel(x, y, 1);
+		int b = PetriDish.getChannel(x, y, 2);
+		if (r > 50) {
+			PetriDish.setChannels(x, y, r/4, 0, 0);
 		}
 		
-		if (PetriDish.getChannel(x, y, 0) > 100)
+		if (g > 100) {
+			PetriDish.setChannels(x, y, 50, g/4, 50);
+		}
+		if (b > 200) {
+			PetriDish.setChannels(x, y, 0, 0, b/4);
+		}
+		if (PetriDish.getChannel(x, y, 2) > 100) {
 			PetriDish.setChannels(x, y, 255, 255, 255);
-		if (r != 0 || r != 100)
-			return true;
-		return false;
+			return false;
+		}
+		return true;
 	}
 	
 	/**
@@ -68,38 +78,38 @@ public class MicrococcusLuteus extends Chromaphagi {
 	 */
 	protected Chromaphagi mitosis(int rand) {
 		int availableCount = 0;
-		int[] neighbors = super.neighborsStatus();
+		int[] neighbors = neighborsStatus();
 		
-		// TODO
-		System.out.println(x + " " + y);
 		for (int i = 0; i < neighbors.length; i++) {
 			if (neighbors[i] == 0)
 				availableCount++;
 		}
 		
-		// TODO
-		for (int i = 0; i < neighbors.length; i++)
-			System.out.print(neighbors[i] + " ");
+		// BUGFIXING GOOD STUFF
+		//for (int i = 0; i < neighbors.length; i++)
+		//	System.out.print(neighbors[i] + " ");
 
 		int direction = 0;
 		
 		if (availableCount != 0) {
 			int randEmptyLoc = rand % availableCount;
-			
-			System.out.println("REL: " + randEmptyLoc);
-			// Determine direction
+
+			// BUGFIXING GOOD STUFF
+			//System.out.println("Rand" + rand);
+			// System.out.println("REL: " + randEmptyLoc);
+
 			for (int i = 0; i < neighbors.length; i++) {
 				// counts 0 - 4;
 				if (neighbors[i] == 0) {
 					if (randEmptyLoc == 0) {
 						direction = i;
 					}
-				} else
 					randEmptyLoc--;
+				}
 			}
 			
-			// TODO
-			System.out.println("direction: " + direction);
+			// BUGFIXING GOOD STUFF
+			// System.out.println("direction: " + direction);
 			
 			switch(direction) {
 			case 0:
@@ -111,18 +121,11 @@ public class MicrococcusLuteus extends Chromaphagi {
 			case 3:
 				return new MicrococcusLuteus(x - 1, y);
 			default:
-				System.out.println("Should not get here");
+				System.out.println("ALERT: Problem in Mitosis, SWITCH");
 					
 			}
 		}
-
 		return null;
 	}
-
-	
-	protected void deactivate() {
-		PetriDish.unSetChromaphagi(x, y);
-	}
-
 	
 }

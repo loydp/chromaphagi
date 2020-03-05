@@ -15,8 +15,9 @@ public abstract class Chromaphagi {
 		PetriDish.setChromaphagi(x, y);
 	}
 	
-	public abstract void process(int rand, Queue<Chromaphagi> edge);
-
+	public abstract void process(int rand, int rand2, Queue<Chromaphagi> edge);
+	
+	protected abstract boolean consume();
 	
 	protected abstract Chromaphagi mitosis(int rand);
 
@@ -31,6 +32,16 @@ public abstract class Chromaphagi {
 		if (PetriDish.inDish(x - 1, y) && PetriDish.isEmpty(x - 1, y))
 			loc[3] = 0;
 		return loc;
+	}
+	
+	protected boolean surrounded() {
+		if ((!PetriDish.inDish(x, y + 1) || !PetriDish.isEmpty(x, y + 1))
+			&& (!PetriDish.inDish(x + 1, y) || !PetriDish.isEmpty(x + 1, y))
+			&& (!PetriDish.inDish(x, y - 1) || !PetriDish.isEmpty(x, y - 1))
+			&& (!PetriDish.inDish(x - 1, y) || !PetriDish.isEmpty(x - 1, y))) {
+			return true;
+		}
+		return false;
 	}
 
 }

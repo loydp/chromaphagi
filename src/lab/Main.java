@@ -17,14 +17,9 @@ public class Main {
 	public static void main(String[] args) {
 		ImageLoader imgLoader = new ImageLoader(IMG_PATH);
 		PetriDish petriDish = new PetriDish(imgLoader.getImage());
-
 		Lab lab = new Lab(petriDish);
 		
 		imgLoader.saveImage(petriDish.getImageArray());
-	}
-
-	public void saveImg() {
-		
 	}
 	
 }
