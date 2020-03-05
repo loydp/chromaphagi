@@ -24,9 +24,9 @@ public class Lab {
 		// TODO overload Culture.java
 		while (go1 && go2) {
 			go1 = culture1.activate();
-			//if (counter % 2 == 0)
-			//	go2 = culture1.activate();
-			//counter++;
+			if (counter % 2 == 0)
+				go2 = culture1.activate();
+			counter++;
 		}
 		/*
 		culture1.activate();
