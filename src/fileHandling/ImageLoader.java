@@ -21,7 +21,8 @@ public class ImageLoader {
 
 	/**
 	 * Takes a buffered image and turns it into a three dimensional array
-	 * containing rgb color channels on the z axis.
+	 * containing r, g, b color channels on the z axis. Note that the Z_AXIS is
+	 * not limited to these three values.
 	 */
 	private void imageToArray() {
 		int pixel;

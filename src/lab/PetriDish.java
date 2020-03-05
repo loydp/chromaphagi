@@ -1,7 +1,5 @@
 package lab;
 
-import chromaphagi.CandidaMilleri;
-
 /**
  * PetriDish holds a 3d array that contains a 
  * @author Owner

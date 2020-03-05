@@ -11,6 +11,7 @@ import fileHandling.ImageLoader;
 public class Main {
 
 	public final static String IMG_PATH = "src/dat/testimg.jpg";
+	
 	PetriDish petriDish;
 	
 	public static void main(String[] args) {
@@ -20,7 +21,10 @@ public class Main {
 		Lab lab = new Lab(petriDish);
 		
 		imgLoader.saveImage(petriDish.getImageArray());
-		
 	}
 
+	public void saveImg() {
+		
+	}
+	
 }

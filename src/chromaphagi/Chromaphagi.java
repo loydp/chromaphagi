@@ -6,25 +6,31 @@ import lab.PetriDish;
 
 public abstract class Chromaphagi {
 
-	// Change to protected, get rid of get x/y?
-	int x;
-	int y;
-/*
-	public int getX() {return x;}
-	public int getY() {return y;}
-*/
+	protected int x;
+	protected int y;
+
 	public Chromaphagi(int x, int y) {
 		this.x = x;
 		this.y = y;
 		PetriDish.setChromaphagi(x, y);
 	}
+	
+	public abstract void process(int rand, Queue<Chromaphagi> edge);
 
-	protected abstract void deactivate();
+	
+	protected abstract Chromaphagi mitosis(int rand);
 
-	private abstract int[] getNeighbors();
-
-	protected abstract Chromaphagi mitosis();
-
-	public abstract Chromaphagi process();
+	protected int[] neighborsStatus() {
+		int[] loc = {1, 1, 1, 1};
+		if (PetriDish.inDish(x, y + 1) && PetriDish.isEmpty(x, y + 1))
+			loc[0] = 0;
+		if (PetriDish.inDish(x + 1, y) && PetriDish.isEmpty(x + 1, y))
+			loc[1] = 0;
+		if (PetriDish.inDish(x, y - 1) && PetriDish.isEmpty(x, y - 1))
+			loc[2] = 0;
+		if (PetriDish.inDish(x - 1, y) && PetriDish.isEmpty(x - 1, y))
+			loc[3] = 0;
+		return loc;
+	}
 
 }
