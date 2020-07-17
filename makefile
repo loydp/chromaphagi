@@ -1,10 +1,11 @@
 CC=g++
-CFLAGS= -std=c++11 -Wall -Werror -pedantic -ggdb
+CFLAGS= -std=c++11 -Wall -Werror -pedantic -ggdb 
+LIBS= `pkg-config --cflags --libs opencv4`
 
-all: driver
-
-driver: chromaphagi/Driver.cpp
-	$(CC) $(CFLAGS) Driver.cpp -o driver
+all: clean driver
 
 clean:
-	rm chromaphagi/driver
+	rm driver
+
+driver: src/Driver.cpp
+	$(CC) $(CFLAGS) $(LIBS) src/Driver.cpp -o driver
