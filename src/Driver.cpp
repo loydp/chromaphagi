@@ -1,24 +1,43 @@
-#include <opencv2/core.hpp>
+#include <iostream>
+#include "fileHandling/FileHandler.h"
+
+//#include <opencv2/core.hpp>
+/*#include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
-#include <iostream>
-
-void testOperation(cv::Mat img) {
-   int columns = img.cols;
-   int rows = img.rows;
-   for (int i = 0; i < columns; i++) {
-      for (int j = 0; j < rows; j++) {
-         if (img.at<cv::Vec3b>(j, i)[0] < 128)
-            img.at<cv::Vec3b>(j, i) = {0, 0, 0};
-      }
-   }
-}
+*/
 
 int main()
 {
-
    std::string image_path = "src/test-100x56.jpg";
-   std::string image_path2 = "src/test-Large.jpg";
+   // std::string image_path2 = "src/test-Large.jpg";
+   std::cout << "Entered string is: " << image_path << std::endl;
+ 
+   /*
+   Makes a FileHandler that will return a reference to
+   the habitat. The FileHandler can then delete itself
+   When needed.
+   */
+   FileHandler fh(image_path);
+
+   fh.makeHabitat();
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+   FileHandler(image_path2) fh;
 
    // Now testing with large
    cv::Mat img = cv::imread(image_path2, cv::IMREAD_COLOR);
@@ -43,6 +62,7 @@ int main()
 
    std::cout << "Testing complete" << std::endl;
    img.release();
+*/
 }
 
 
