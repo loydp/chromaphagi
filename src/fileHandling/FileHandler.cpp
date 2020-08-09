@@ -10,7 +10,6 @@
 
 FileHandler::FileHandler(std::string filePath) 
 {
-   filePath.insert(0, "../");
    this->filePath = filePath;
 
    std::cout << "FileHandler has filepath: " << filePath << std::endl;
@@ -18,10 +17,14 @@ FileHandler::FileHandler(std::string filePath)
 
 Habitat * FileHandler::makeHabitat() 
 {
-   std::cout << "Making habitat" << std::endl;
-   
+   std::cout << "Making habitat using filepath: " << filePath << std::endl;
    cv::Mat img = cv::imread(filePath, cv::IMREAD_COLOR);
-   
+   if (img.empty())
+   {
+      std::cout << "ERROR: Could not find: " << filePath << std::endl;
+      img.release();
+   }
+
    Habitat * hab_ptr;
    hab_ptr = new Habitat(img.rows, img.cols);
 
@@ -38,6 +41,9 @@ Habitat * FileHandler::makeHabitat()
 
    return hab_ptr;
 }
+
+
+
 
 FileHandler::~FileHandler()
 {

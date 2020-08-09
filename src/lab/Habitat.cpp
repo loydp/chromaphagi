@@ -22,6 +22,7 @@ void Habitat::setCell(int row, int col, int depth, int val)
 
 int Habitat::getCell(int row, int col, int depth)
 {
+   std::cout << "About to return: " << matrix[depth][col][row] << std::endl;
    return matrix[depth][col][row];
 }
 

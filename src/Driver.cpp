@@ -1,5 +1,6 @@
 #include <iostream>
 #include "fileHandling/FileHandler.h"
+#include "lab/Habitat.h"
 
 //#include <opencv2/core.hpp>
 /*#include <opencv2/core.hpp>
@@ -20,19 +21,9 @@ int main()
    */
    FileHandler fh(image_path);
 
-   fh.makeHabitat();
-
-
-
-
-
-
-
-
-
-
-
-
+   Habitat *hab = fh.makeHabitat();
+   std::cout << hab << std::endl;
+   std::cout << "Sample: " << hab->getCell(0, 0, 0) << std::endl;
 
 /*
 
