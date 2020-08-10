@@ -23,35 +23,15 @@ int main()
 
    Habitat *hab = fh.makeHabitat();
    std::cout << hab << std::endl;
-   std::cout << "Sample: " << hab->getCell(0, 0, 0) << std::endl;
+   std::cout << "Sample: " << hab->getCell(99, 55, 0) << std::endl;
+   std::cout << "Sample: " << hab->getCell(99, 55, 1) << std::endl;
+   std::cout << "Sample: " << hab->getCell(99, 56, 2) << std::endl;
+
+   fh.writeHabToMat(*hab);
+   fh.displayMat();
+   fh.cleanup(*hab);
 
 /*
-
-
-   FileHandler(image_path2) fh;
-
-   // Now testing with large
-   cv::Mat img = cv::imread(image_path2, cv::IMREAD_COLOR);
-   if (img.empty()) 
-   {
-      std::cout << "Could not find image: " << image_path << std::endl;
-      img.release();
-      return 1;
-   }
-
-   // cv::Vec3b pixel = img.at<cv::Vec3b>(10, 10);
-
-   testOperation(img);
-
-   imshow("Display window", img);
-   int k = cv::waitKey(0);
-
-   if (k == 's')
-   {
-      cv::imwrite("starry_night.png", img);
-   }
-
-   std::cout << "Testing complete" << std::endl;
    img.release();
 */
 }
