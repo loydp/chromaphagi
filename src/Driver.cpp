@@ -1,7 +1,8 @@
 #include <iostream>
 #include "fileHandling/FileHandler.h"
 #include "lab/Habitat.h"
-
+#include "lab/Culture.h"
+#include "chromaphagi/Chromaphagi.h"
 //#include <opencv2/core.hpp>
 /*#include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -23,9 +24,19 @@ int main()
 
    Habitat *hab = fh.makeHabitat();
    std::cout << hab << std::endl;
+
+// TESTING STUFF
+/*
    std::cout << "Sample: " << hab->getCell(99, 55, 0) << std::endl;
    std::cout << "Sample: " << hab->getCell(99, 55, 1) << std::endl;
    std::cout << "Sample: " << hab->getCell(99, 56, 2) << std::endl;
+*/
+
+
+   Chromaphagi species(10, 10);
+
+   Culture culture;
+   culture.activate(*hab, species);
 
    fh.writeHabToMat(*hab);
    fh.displayMat();

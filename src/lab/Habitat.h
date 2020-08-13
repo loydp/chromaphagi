@@ -23,6 +23,9 @@ public:
 
    int getCell(int row, int column, int depth);
 
+   int getWidth();
+   int getHeight();
+
    ~Habitat();
 };
 

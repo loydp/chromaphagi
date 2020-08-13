@@ -25,6 +25,9 @@ int Habitat::getCell(int row, int col, int depth)
    return matrix[depth][col][row];
 }
 
+int Habitat::getWidth() {return column;}
+int Habitat::getHeight() {return row;}
+
 Habitat::~Habitat()
 {
    std::cout << "Hab destructor called" << std::endl;

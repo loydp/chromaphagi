@@ -28,7 +28,7 @@ Habitat * FileHandler::makeHabitat()
    Habitat * hab_ptr;
    hab_ptr = new Habitat(img.rows, img.cols);
 
-   std::cout << "cols: " << img.cols << "rows: " << img.rows << std::endl;
+   std::cout << "cols: " << img.cols << ". rows: " << img.rows << std::endl;
    for (int i = 0; i < img.rows; i++)
    {
       for (int j = 0; j < img.cols; j++)
