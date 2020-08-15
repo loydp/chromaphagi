@@ -6,7 +6,7 @@
 Culture::Culture()
 {
    std::cout << "Culture created." << std::endl;
-   std::cout << colony.empty() << std::endl;
+   std::cout << edge.empty() << std::endl;
 }
 
 int Culture::activate(Habitat &hab, Chromaphagi species)
@@ -18,13 +18,15 @@ int Culture::activate(Habitat &hab, Chromaphagi species)
    int width = hab.getWidth();
    int height = hab.getHeight();
    std::cout << height << width << std::endl;
-   colony.push(species);
+ //  edge.push(species);
    objectCount++;
 
-   while (!colony.empty())
+   // TODO
+
+   while (!edge.empty())
    {
-      colony.front().mitosis();
-      colony.pop();
+//      edge.front().mitosis(hab);
+//      edge.pop();
    }
 
    return objectCount;

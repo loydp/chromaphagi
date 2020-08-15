@@ -2,7 +2,8 @@
 #include "fileHandling/FileHandler.h"
 #include "lab/Habitat.h"
 #include "lab/Culture.h"
-#include "chromaphagi/Chromaphagi.h"
+#include "chromaphagi/Milleri.h"
+
 //#include <opencv2/core.hpp>
 /*#include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -33,7 +34,7 @@ int main()
 */
 
 
-   Chromaphagi species(10, 10);
+   Milleri species(10, 10);
 
    Culture culture;
    culture.activate(*hab, species);
