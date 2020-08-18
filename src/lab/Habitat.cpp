@@ -14,6 +14,16 @@ Habitat::Habitat(int numRows, int numColumns)
    matrix.resize(depth, std::vector<std::vector<int> >(column, std::vector<int>(row, 0)));
 }
 
+bool Habitat::validLocation(int width, int height)
+{
+   if (width < column && width >= 0 && height < row && height >= 0)
+   {
+		return true;
+   }
+
+	return false;
+}
+
 // depth column row value
 void Habitat::setCell(int row, int col, int depth, int val) 
 {

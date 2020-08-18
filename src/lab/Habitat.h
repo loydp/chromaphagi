@@ -23,6 +23,7 @@ public:
 
    int getCell(int row, int column, int depth);
 
+   bool validLocation(int width, int height);
    int getWidth();
    int getHeight();
 

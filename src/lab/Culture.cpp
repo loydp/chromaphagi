@@ -25,8 +25,8 @@ int Culture::activate(Habitat &hab, Chromaphagi species)
 
    while (!edge.empty())
    {
-//      edge.front().mitosis(hab);
-//      edge.pop();
+      edge.front().mitosis(hab);
+      edge.pop();
    }
 
    return objectCount;
