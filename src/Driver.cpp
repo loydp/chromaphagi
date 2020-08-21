@@ -34,10 +34,10 @@ int main()
 */
 
 
-   Milleri species(10, 10);
+   Milleri * species_ptr = new Milleri(10, 10);
 
    Culture culture;
-   culture.activate(*hab, species);
+   std::cout << "Culture count: " << culture.activate(*hab, species_ptr) << std::endl;
 
    fh.writeHabToMat(*hab);
    fh.displayMat();

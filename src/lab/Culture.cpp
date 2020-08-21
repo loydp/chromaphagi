@@ -9,24 +9,38 @@ Culture::Culture()
    std::cout << edge.empty() << std::endl;
 }
 
-int Culture::activate(Habitat &hab, Chromaphagi species)
+int Culture::activate(Habitat &hab, Chromaphagi * species)
 {
    std::cout << "Culture:: activating." << std::endl;
 
    int objectCount = 0;
 
-   int width = hab.getWidth();
-   int height = hab.getHeight();
-   std::cout << height << width << std::endl;
- //  edge.push(species);
+   //TODO: delete species?
+   edge.push(species);
    objectCount++;
 
-   // TODO
+   bool pop_or_not;
 
+   /*
+   Starting with a single Chromaphagi, activates it and depending what it returns
+   either moves onto the next in the queue or pops the previous one off.
+   */
    while (!edge.empty())
    {
-      edge.front().mitosis(hab);
-      edge.pop();
+      std::cout << "EDGE SIZE: " << edge.size() << std::endl;
+      pop_or_not = edge.front()->process(hab, edge);
+      objectCount++;
+      if (pop_or_not == true)
+      {
+         delete edge.front();
+         edge.pop();
+         objectCount--;
+         std::cout << "Object Count: " << objectCount << std::endl;
+      }
+
+
+//      edge.front().mitosis(hab);
+//      edge.pop();
    }
 
    return objectCount;

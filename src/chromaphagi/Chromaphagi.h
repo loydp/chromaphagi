@@ -2,23 +2,24 @@
 #define CHROMAPHAGI_H
 
 #include "../lab/Habitat.h"
-#include "../lab/Culture.h"
+#include <queue>
 
 class Chromaphagi {
 
 public:
    Chromaphagi();
-   Chromaphagi(int x, int y);
-   Chromaphagi & mitosis(Habitat &hab, edge);
-//   virtual Chromaphagi & mitosis(Habitat &hab);
-//   virtual ~Chromaphagi();
+   Chromaphagi(int, int);
+
+   virtual bool process(Habitat&, std::queue<Chromaphagi*>&);
 
 /*
+   Chromaphagi();
+   Chromaphagi(int x, int y);
    virtual Chromaphagi & mitosis(Habitat &hab);
-   virtual ~Chromaphagi();
 */
+   virtual ~Chromaphagi();
 
-private:
+protected:
    int x;
    int y;
 };

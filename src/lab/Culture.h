@@ -7,13 +7,13 @@
 
 class Culture {
    private:
-   std::queue<Chromaphagi> edge;
+   std::queue<Chromaphagi*> edge;
 
    public:
 
    Culture();
 
-   int activate(Habitat &hab, Chromaphagi species);
+   int activate(Habitat &hab, Chromaphagi *);
 
    ~Culture();
 

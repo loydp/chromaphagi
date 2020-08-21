@@ -11,6 +11,8 @@ public:
 
    Milleri(int x, int y);
 
+   bool process(Habitat&, std::queue<Chromaphagi*>&);
+
    Chromaphagi & mitosis(Habitat &hab);
    
    ~Milleri();
