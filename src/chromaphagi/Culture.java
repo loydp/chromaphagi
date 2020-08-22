@@ -22,8 +22,8 @@ public class Culture {
 		int r2 = rand.nextInt(128);
 		if (!edge.isEmpty())
 			edge.poll().process(r, r2, edge);
-			else
-				edge.poll();
+		else
+			edge.poll();
 		if (edge.isEmpty())
 			return false;
 		return true;

@@ -13,7 +13,7 @@ class Culture {
 
    Culture();
 
-   int activate(Habitat &hab, Chromaphagi *);
+   void activate(Habitat &hab, Chromaphagi *);
 
    ~Culture();
 
