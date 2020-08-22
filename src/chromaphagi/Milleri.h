@@ -13,7 +13,7 @@ public:
 
    bool process(Habitat&, std::queue<Chromaphagi*>&);
 
-   Chromaphagi & mitosis(Habitat &hab);
+   void mitosis(Habitat &hab, std::queue<Chromaphagi*>&);
    
    ~Milleri();
 };

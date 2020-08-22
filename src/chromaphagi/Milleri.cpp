@@ -18,19 +18,21 @@ Milleri::Milleri(int x, int y) : Chromaphagi(x, y)
 
 bool Milleri::process(Habitat& hab, std::queue<Chromaphagi*>& edge)
 {
-   if (hab.validLocation(x + 1, y))
-   {
-      std::cout << "push new" << std::endl;
-      Chromaphagi *newChroma = new Milleri(x + 1, y);
-      edge.push(newChroma);
-   }
+   hab.setCell(x, y, 0, 255);
+   hab.setCell(x, y, 1, 255);
+   hab.setCell(x, y, 2, 255);
+   mitosis(hab, edge);
    return true;
 }
 
-Chromaphagi & Milleri::mitosis(Habitat &hab)
+void Milleri::mitosis(Habitat &hab, std::queue<Chromaphagi*>& edge)
 {
-   Milleri *retValue = new Milleri(0, 0);
-   return *retValue;
+   if (hab.validLocation(x + 1, y))
+   {
+      std::cout << "Push new at " << (x + 1) << (y) << std::endl;
+      Chromaphagi *newChroma = new Milleri(x + 1, y);
+      edge.push(newChroma);
+   }
 }
 
 Milleri::~Milleri()
