@@ -7,8 +7,15 @@ Chromaphagi::Chromaphagi()
 }
 
 
-bool Chromaphagi::process(Habitat&, std::queue<Chromaphagi*>&) {
+bool Chromaphagi::process(Habitat&, std::queue<Chromaphagi*>&) 
+{
    std::cout << "Chrphg.process. x = " << x << " Y = " << y << std::endl;
+   return true;
+}
+
+bool Chromaphagi::activate(Habitat&)
+{
+   std::cout << "Chrchphg.activate() has been erroneously activated" << std::endl;
    return true;
 }
 

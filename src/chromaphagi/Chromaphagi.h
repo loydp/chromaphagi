@@ -11,7 +11,7 @@ public:
    Chromaphagi(int, int);
 
    virtual bool process(Habitat&, std::queue<Chromaphagi*>&);
-
+   virtual bool activate(Habitat&);
 /*
    Chromaphagi();
    Chromaphagi(int x, int y);

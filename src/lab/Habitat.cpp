@@ -8,7 +8,7 @@
 Habitat::Habitat(int numRows, int numColumns)
 {
    std::cout << "Hab ctor called" << std::endl;
-   depth = 3;
+   depth = 4;
    row = numRows;
    column = numColumns;
    matrix.resize(depth, std::vector<std::vector<int> >(column, std::vector<int>(row, 0)));

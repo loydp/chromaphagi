@@ -18,6 +18,8 @@ void Culture::activate(Habitat &hab, Chromaphagi * species)
    std::cout << "Culture:: activating." << std::endl;
 
    //TODO: delete species?
+   species->activate(hab);
+   
    edge.push(species);
 
    bool pop_or_not;
