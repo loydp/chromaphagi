@@ -7,36 +7,35 @@ def get_input_image(config):
     config['file_name'] = first_image_name
     return image
 
-def save_image(image, name):
-    output_contents = os.listdir(config['output_path'])
-    num = 1
-    if name in output_contents:
-        suffix = f"_{num}"
-        # TODO: put name stuff here
+def save_image(image, config):
     cv2.imwrite(f"{config['output_path']}{config['file_name']}", image)
 
-def main(config):
-    # 1. take in.
-    image = get_input_image(config)
-    image[::-1, ::-1] = image[:, :]
-    # 2. create petridish
-    # 3. select strain
-    # 4. Run it through, with config
+def _setup(config):
+    pass
 
-    for i in range(len(image)):
-        #print(image[i:i+1:])
+
+def _process(config):
+    return True
+
+def main(config):
+    image = get_input_image(config)
+
+    _setup(config)
+
+    cv2.imshow("Example", image)
+    for i in range(50):
+        continue_running = _process(config)
+        if not continue_running:
+            break
         cv2.imshow("Example", image)
-        image[i:i+1:, i:i+1:] = [255, 255, 255]
-        cv2.waitKey(30)
-    # TODO: run it through
-    # 5. Repeat as needed
-    # 6. Show result
+        cv2.waitKey(config['speed'])
 
     save_image(image, config)
     return None
 
 if __name__ == '__main__':
     config = {
+        "speed": 300,
         "output_path": '../output/',
         "input_path": '../input/',
     }
