@@ -33,8 +33,8 @@ def main(config):
     return None
 
 config = {
-   "max_runtime" : 30,
-   "speed" : 100,
+   "max_runtime" : 3000,
+   "speed" : 1,
    'start' : [(0, 0)],
    "output_path" : '../output/',
    "input_path" : '../input/',
@@ -43,5 +43,4 @@ config = {
 
 if __name__ == '__main__':
    config['chromaphagi'] = chromaphagi.Milleri
-   print("hello")
    main(config)
