@@ -1,4 +1,23 @@
 class Chromaphagi:
+    def __init__(self, chroma) -> None:
+        self.chroma = chroma
+        self.starting_position = (0,   0)
+
+    def step(self, config:dict, image) -> str:
+        return self.chroma.get_tracker()    
+
+
+
+class Milleri:
+    def __init__(self) -> None:
+        self.tracker = "hello world"
+
+    def get_tracker(self) -> str:
+        return self.tracker
+
+'''
+
+class Chromaphagi:
 
     def __init__(self) -> None:
         raise NotImplementedError()
@@ -35,9 +54,7 @@ class Milleri(Chromaphagi):
 
 
     def process(self, config:dict, image, cell:tuple):
-        '''Takes in a cell location and an image, with context
-        Determines behavior: e.g. "aliveness", replicaiton, or other actions
-        '''
+
         x, y = cell
         b, g, r = image[y, x]
 
@@ -72,7 +89,6 @@ class Milleri(Chromaphagi):
 
 
     def step(self, config:dict, image) -> bool:
-        '''Represents one step through each item in the tracker'''
         # look at everything in the tracker, one by one.
         # for each item: process its own area
         last_tracked = {val for val in self.tracker}
@@ -87,3 +103,5 @@ class Milleri(Chromaphagi):
         if self.tracker:
             return True
         return False
+
+'''
