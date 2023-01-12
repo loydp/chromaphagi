@@ -1,4 +1,4 @@
-class Chromaphagi:
+class chromaphagi:
     def __init__(self, chroma) -> None:
         self.chroma = chroma
         self.starting_position = (0, 0)
@@ -22,7 +22,12 @@ _direction = {
 }
 
 
-class Milleri:
+class kon:
+    def __init__(self) -> None:
+        print("opening up")
+
+
+class milleri:
     def __init__(self) -> None:
         self.tracker = set()
 

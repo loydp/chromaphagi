@@ -1,6 +1,5 @@
 import os
 import cv2
-
 import chromaphagi
 
 
@@ -50,8 +49,7 @@ def main(config):
     # create the petri dish
     petri_dish = Petri_Dish(img)
     # create the chromaphagi strain
-    phagi = chromaphagi.Chromaphagi(chromaphagi.Milleri())
-    # combine
+    phagi = chromaphagi.chromaphagi(chromaphagi.milleri())
     petri_dish.inoculate(phagi, (0, 0))
     # activate the chromaphagi strain
     decayed_image = petri_dish.run()
@@ -68,9 +66,19 @@ config = {
     "output_path": "../output/",
     "input_path": "../input/",
     "chromaphagi": {
-        "milleri": chromaphagi.Milleri,
+        "milleri": chromaphagi.milleri,
     },
 }
 
+import tst
+
 if __name__ == "__main__":
+    t = tst.tst()
+    res1 = t.return_hi()
+    t2 = tst.Tst2()
+    res2 = t2.return_hello()
+    print(res1, res2)
+
+    chroma = chromaphagi.kon()
+
     main(config)
