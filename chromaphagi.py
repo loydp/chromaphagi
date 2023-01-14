@@ -10,7 +10,7 @@ class chromaphagi:
         return self.chroma.step_strain(config, image)
 
 
-_direction = {
+_vonNeumann = {
     "up": (0, -1),
     "upright": (1, -1),
     "right": (1, 0),
@@ -21,10 +21,7 @@ _direction = {
     "upleft": (-1, -1),
 }
 
-
-class kon:
-    def __init__(self) -> None:
-        print("opening up")
+_Moore = {}
 
 
 class milleri:
@@ -34,18 +31,20 @@ class milleri:
     def add_to_tracker(self, coordinates: tuple[int, int]):
         self.tracker.add(coordinates)
 
-    def step_strain(self, config, image):
+    def step_strain(self, config: dict, image):
         # look at everything in the tracker, one by one.
         # for each item: process its own area
-        last_tracked = {val for val in self.tracker}
+        old_set = self.tracker
+        self.tracker = set()
         # print("Tracker spread: ", len(self.tracker))
-        while last_tracked:
-            cell = last_tracked.pop()
+        while old_set:
+            cell = old_set.pop()
             spread = self.process(config, image, cell)
             if spread:
                 for new_cell in spread:
-                    if new_cell not in self.tracker:
+                    if new_cell not in self.tracker and new_cell not in old_set:
                         self.tracker.add(new_cell)
+
         if self.tracker:
             return True
         return False
@@ -56,9 +55,14 @@ class milleri:
         colors = list(map(int, colors))
         divided = sum(colors) // 3
         tolerance = 30
+        """
         for c in [b, g, r]:
             if divided - tolerance > c > divided + tolerance:
                 return False
+        return True
+        """
+        if divided == 0 or divided == 255:
+            return False
         return True
 
     def process(self, config: dict, image, cell: tuple):
@@ -76,10 +80,10 @@ class milleri:
         for dx, dy in directions:
             nx = x + dx
             ny = y + dy
-            if 0 > nx or nx > len(image):
+            if 0 > ny or ny > len(image):
                 # print("else", x, y)
                 continue
-            elif 0 > ny or ny > len(image[0]):
+            elif 0 > nx or nx > len(image[0]):
                 # print("elif", x, y)
                 continue
             if self.is_active(image, nx, ny):

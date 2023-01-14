@@ -10,11 +10,12 @@ class Petri_Dish:
         self.config = None
 
     def inoculate(self, culture, coordinates=None) -> None:
-        if coordinates == None:
-            x = len(self.image) // 2
-            y = len(self.image[0]) // 2
+        if not coordinates:
+            y = len(self.image) // 2
+            x = len(self.image[0]) // 2
             coordinates = (x, y)
-            culture.set_start_position(coordinates)
+        print(coordinates)
+        culture.set_start_position(coordinates)
         self.phagi.append(culture)
 
     def run(self) -> cv2.Mat:
@@ -50,7 +51,7 @@ def main(config):
     petri_dish = Petri_Dish(img)
     # create the chromaphagi strain
     phagi = chromaphagi.chromaphagi(chromaphagi.milleri())
-    petri_dish.inoculate(phagi, (0, 0))
+    petri_dish.inoculate(phagi, None)
     # activate the chromaphagi strain
     decayed_image = petri_dish.run()
     # save/store the image
@@ -62,23 +63,14 @@ def main(config):
 config = {
     "max_runtime": 3000,
     "speed": 1,
-    "start": [(0, 0)],
-    "output_path": "../output/",
-    "input_path": "../input/",
+    "start": None,
+    "output_path": "output/",
+    "input_path": "input/",
     "chromaphagi": {
         "milleri": chromaphagi.milleri,
     },
 }
 
-import tst
 
 if __name__ == "__main__":
-    t = tst.tst()
-    res1 = t.return_hi()
-    t2 = tst.Tst2()
-    res2 = t2.return_hello()
-    print(res1, res2)
-
-    chroma = chromaphagi.kon()
-
     main(config)
