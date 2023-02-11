@@ -1,16 +1,4 @@
 # Default ignored files
-.idea/
-out/
-chromaphagi.iml
-/.idea/workspace.xml
-driver.dSYM/Contents/Resources/DWARF/driver
-driver.dSYM/Contents/Info.plist
-.vscode/c_cpp_properties.json
+input/*
+output/*
 .vscode/settings.json
-src/Makefile
-makefile
-driver
-.gitignore
-.gitignore
-.gitignore
-makefile

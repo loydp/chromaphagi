@@ -1,16 +1,17 @@
 class chromaphagi:
     def __init__(self, chroma) -> None:
-        self.chroma = chroma
+        self.chroma = phagi[chroma[0]]()
+        # TODO: start position initialization location is odd
         self.starting_position = (0, 0)
 
     def set_start_position(self, coordinates):
         self.chroma.add_to_tracker(coordinates)
 
-    def step(self, config: dict, image) -> str:
+    def step(self, config: dict, image) -> bool:
         return self.chroma.step_strain(config, image)
 
 
-_vonNeumann = {
+_Moore = {
     "up": (0, -1),
     "upright": (1, -1),
     "right": (1, 0),
@@ -21,7 +22,12 @@ _vonNeumann = {
     "upleft": (-1, -1),
 }
 
-_Moore = {}
+_vonNeumann = {
+    "up": (0, -1),
+    "right": (1, 0),
+    "down": (0, 1),
+    "left": (-1, 0),
+}
 
 
 class milleri:
@@ -31,7 +37,7 @@ class milleri:
     def add_to_tracker(self, coordinates: tuple[int, int]):
         self.tracker.add(coordinates)
 
-    def step_strain(self, config: dict, image):
+    def step_strain(self, config: dict, image) -> bool:
         # look at everything in the tracker, one by one.
         # for each item: process its own area
         old_set = self.tracker
@@ -50,6 +56,11 @@ class milleri:
         return False
 
     def is_active(self, image, x, y):
+        height, length = image.shape[0], image.shape[1]
+        if x < 0 or x >= length:
+            return False
+        if y < 0 or y >= height:
+            return False
         b, g, r = image[y, x]
         colors = [b, g, r]
         colors = list(map(int, colors))
@@ -75,6 +86,7 @@ class milleri:
         if not self.is_active(image, x, y):
             return spread
 
+        # TODO:
         directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         # determine if the current location spreads
         for dx, dy in directions:
@@ -97,3 +109,8 @@ class milleri:
         else:
             image[y, x] = [0, 0, 0]
         return spread
+
+
+phagi = {
+    "milleri": milleri,
+}

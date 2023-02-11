@@ -50,7 +50,7 @@ def main(config):
     # create the petri dish
     petri_dish = Petri_Dish(img)
     # create the chromaphagi strain
-    phagi = chromaphagi.chromaphagi(chromaphagi.milleri())
+    phagi = chromaphagi.chromaphagi(["milleri"])
     petri_dish.inoculate(phagi, None)
     # activate the chromaphagi strain
     decayed_image = petri_dish.run()
